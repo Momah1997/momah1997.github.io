@@ -1,101 +1,146 @@
-/* General Styles */
+/* Reset and General Styles */
+:root {
+    --primary-color: #d4af37;
+    --secondary-color: #333;
+    --text-color: #2c3e50;
+    --background-light: #f9f9f9;
+    --transition: all 0.3s ease;
+}
+
 body {
     font-family: 'Helvetica Neue', Arial, sans-serif;
-    color: #333;
-    background: #f9f9f9;
+    color: var(--text-color);
+    background: var(--background-light);
     margin: 0;
     padding: 0;
     line-height: 1.8;
 }
 
-/* Combined Header and Hero Section */
+/* Header/Hero Section */
 #hero {
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('images/hero-background.jpg'); /* Updated to local image */
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)), url('../images/hero-background.jpg');
     background-size: cover;
     background-position: center;
+    background-attachment: fixed;
     color: #fff;
     text-align: center;
-    padding: 8rem 2rem;
+    padding: 12rem 2rem;
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 40vh;
+    min-height: 60vh;
+    position: relative;
 }
 
 #hero .hero-content {
-    max-width: 800px;
+    max-width: 900px;
+    animation: fadeIn 1s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 #hero h1 {
     margin: 0;
-    font-size: 4rem;
-    font-weight: 600;
+    font-size: 4.5rem;
+    font-weight: 700;
     letter-spacing: 2px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 #hero .subtitle {
-    font-size: 1.3rem;
+    font-size: 1.5rem;
     font-weight: 300;
-    letter-spacing: 1px;
-    margin-bottom: 2rem;
+    letter-spacing: 1.5px;
+    margin: 1rem 0 2rem;
+    color: var(--primary-color);
 }
 
 #hero h2 {
     color: #fff;
-    font-size: 2.8rem;
-    margin-top: 1rem;
-    line-height: 1.2;
+    font-size: 3rem;
+    margin-top: 2rem;
+    line-height: 1.3;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
 }
 
 #hero p {
-    margin: 0.5rem 0 2rem;
-    font-size: 1.5rem;
+    margin: 1rem 0 2.5rem;
+    font-size: 1.6rem;
     font-weight: 300;
     letter-spacing: 1px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 /* Navigation */
 nav {
     display: flex;
     justify-content: center;
-    background: rgba(0, 0, 0, 0.9);
-    padding: 1.5rem;
-    position: sticky;
+    background: rgba(0, 0, 0, 0.95);
+    padding: 1.2rem;
+    position: fixed;
+    width: 100%;
     top: 0;
     z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: var(--transition);
 }
 
 nav a {
     color: #fff;
     text-decoration: none;
-    font-weight: 300;
+    font-weight: 400;
     font-size: 1.1rem;
-    letter-spacing: 1px;
+    letter-spacing: 1.5px;
     margin: 0 2rem;
-    transition: color 0.3s ease;
+    padding: 0.5rem 1rem;
+    transition: var(--transition);
+    position: relative;
 }
 
-nav a:hover {
-    color: #d4af37;
+nav a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 50%;
+    background-color: var(--primary-color);
+    transition: var(--transition);
+    transform: translateX(-50%);
+}
+
+nav a:hover::after {
+    width: 100%;
 }
 
 /* Sections */
 section {
-    padding: 4rem 2rem;
-    margin: 2rem auto;
-    max-width: 800px;
+    padding: 5rem 2rem;
+    margin: 3rem auto;
+    max-width: 1000px;
     background: #fff;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-    border-radius: 10px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    transition: var(--transition);
+}
+
+section:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 35px rgba(0, 0, 0, 0.15);
 }
 
 h2 {
-    color: #333;
-    font-size: 2rem;
+    color: var(--secondary-color);
+    font-size: 2.5rem;
     font-weight: 600;
     letter-spacing: 1px;
-    margin-bottom: 1.5rem;
-    border-bottom: 2px solid #d4af37;
+    margin-bottom: 2rem;
+    border-bottom: 3px solid var(--primary-color);
     display: inline-block;
     padding-bottom: 0.5rem;
 }
@@ -103,52 +148,123 @@ h2 {
 /* Call to Action Button */
 .cta-button {
     display: inline-block;
-    padding: 1rem 2rem;
-    background-color: #d4af37;
+    padding: 1.2rem 2.5rem;
+    background-color: var(--primary-color);
     color: #fff;
     text-decoration: none;
-    border-radius: 5px;
+    border-radius: 50px;
     font-weight: bold;
-    transition: background-color 0.3s ease;
-    margin-top: 2rem;
+    font-size: 1.1rem;
+    transition: var(--transition);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
 }
 
 .cta-button:hover {
     background-color: #c79f36;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
 }
 
 /* Awards Styling */
 .award {
     margin-bottom: 2rem;
-    padding: 1.5rem;
-    border: 1px solid #ddd;
-    border-radius: 5px;
+    padding: 2rem;
+    border: none;
+    background: linear-gradient(135deg, #fff, #f8f9fa);
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    transition: var(--transition);
+}
+
+.award:hover {
+    transform: translateX(5px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
 }
 
 .award strong {
+    color: var(--primary-color);
     font-weight: 600;
+    font-size: 1.2rem;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+/* Contact Section */
+#contact ul {
+    list-style: none;
+    padding: 0;
+}
+
+#contact ul li {
+    margin: 1rem 0;
+    font-size: 1.1rem;
+}
+
+#contact ul li a {
+    color: var(--text-color);
+    text-decoration: none;
+    transition: var(--transition);
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+}
+
+#contact ul li a:hover {
+    color: var(--primary-color);
+    background: rgba(212, 175, 55, 0.1);
 }
 
 /* Footer */
 footer {
     text-align: center;
     padding: 2rem;
-    background: #333;
+    background: var(--secondary-color);
     color: #fff;
-    font-size: 0.9rem;
+    font-size: 1rem;
 }
 
-/* Basic Responsive Design - Adjust as needed */
+/* Responsive Design */
 @media (max-width: 768px) {
     #hero {
-        padding: 4rem 1rem;
+        padding: 6rem 1rem;
     }
 
     #hero h1 {
-        font-size: 2.5rem;
+        font-size: 3rem;
+    }
+
+    #hero h2 {
+        font-size: 2rem;
+    }
+
+    #hero p {
+        font-size: 1.2rem;
+    }
+
+    nav {
+        padding: 1rem 0;
+    }
+
+    nav a {
+        margin: 0 1rem;
+        font-size: 1rem;
     }
 
     section {
-        padding: 3rem 1rem;
+        padding: 3rem 1.5rem;
+        margin: 2rem 1rem;
+    }
+
+    h2 {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    nav a {
+        margin: 0 0.5rem;
+        font-size: 0.9rem;
     }
 }
