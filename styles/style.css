@@ -10,32 +10,48 @@ body {
 
 /* Combined Header and Hero Section */
 #hero {
-    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1588247893249-90027fce33cf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80'); /* Replace with your chosen image */
     background-size: cover;
     background-position: center;
     color: #fff;
     text-align: center;
-    padding: 6rem 2rem;
+    padding: 8rem 2rem; /* Increased padding */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 40vh; /* Ensure minimum height */
+}
+
+#hero .hero-content { /* Added a container for better content positioning */
+    max-width: 800px; 
 }
 
 #hero h1 {
     margin: 0;
-    font-size: 3.5rem;
-    font-weight: 300;
+    font-size: 4rem; /* Increased font size */
+    font-weight: 600; /* Bolder font weight */
     letter-spacing: 2px;
 }
 
-#hero p {
-    margin: 0.5rem 0 0;
-    font-size: 1.4rem;
+#hero .subtitle { /* Styled the subtitle */
+    font-size: 1.3rem;
     font-weight: 300;
     letter-spacing: 1px;
+    margin-bottom: 2rem;
 }
 
 #hero h2 {
     color: #fff;
-    font-size: 2.5rem;
-    margin-top: 2rem; 
+    font-size: 2.8rem; /* Increased font size */
+    margin-top: 1rem;
+    line-height: 1.2; /* Adjusted line height */
+}
+
+#hero p {
+    margin: 0.5rem 0 2rem; /* Increased margin bottom */
+    font-size: 1.5rem; /* Increased font size */
+    font-weight: 300;
+    letter-spacing: 1px;
 }
 
 /* Navigation */
@@ -76,7 +92,7 @@ section {
 h2 {
     color: #333;
     font-size: 2rem;
-    font-weight: 300;
+    font-weight: 600; /* Increased font weight */
     letter-spacing: 1px;
     margin-bottom: 1.5rem;
     border-bottom: 2px solid #d4af37; 
@@ -97,42 +113,4 @@ h2 {
     margin-top: 2rem;
 }
 
-.cta-button:hover {
-    background-color: #c79f36; 
-}
-
-/* Awards Styling */
-.award {
-    margin-bottom: 2rem;
-    padding: 1.5rem;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-}
-
-.award strong { 
-    font-weight: 600;
-}
-
-/* Footer */
-footer {
-    text-align: center;
-    padding: 2rem;
-    background: #333;
-    color: #fff;
-    font-size: 0.9rem;
-}
-
-/* Basic Responsive Design - Adjust as needed */
-@media (max-width: 768px) {
-    #hero {
-        padding: 4rem 1rem;
-    }
-
-    #hero h1 {
-        font-size: 2.5rem;
-    }
-
-    section {
-        padding: 3rem 1rem;
-    }
-}
+/* ... rest of your CSS ... */
